@@ -67,12 +67,15 @@
           </i>
         </div>
         <ul>
-          <List
-            :music="music"
-            v-for="music in musicList"
-            :key="music"
-            @click="changeMusic(music.index)"
-          />
+          <li :music="music" v-for="music in musicList" :key="music" @click="changeMusic(music.index)">
+            <div class="row">
+              <span>{{ music.title }} {{ music.opus }} {{ music.tonality }}</span>
+              <p>{{ music.composer }}</p>
+            </div>
+            <audio v-on:loadeddata="loadeddata" :id="`audio${music.index}`" :src="`${music.file}`"
+            ></audio>
+            <span :id="`${music.file}`" class="audio-duration">3:40</span>
+          </li>
         </ul>
       </div>
     </div>
@@ -80,21 +83,19 @@
 </template>
 
 <script>
-import List from "./components/List.vue";
 
 export default {
   name: "App",
-  created() {
+  beforeMount() {
     this.axios
       .get("http://localhost:8011/selectall")
       .then((result) => {
-        console.log("set");
         this.musicList = result.data;
       })
       .then(
         this.axios.get("http://localhost:8011/selectone").then((result) => {
-          console.log("load");
           this.playingMusic = result.data;
+          console.log("크롬 정책으로 인해 처음 자동재생이 불가능합니다.");
         })
       );
   },
@@ -142,7 +143,6 @@ export default {
     };
   },
   components: {
-    List,
   },
   methods: {
     playMusic() {
@@ -150,7 +150,7 @@ export default {
       // let mainAudio = document.querySelector("#mainAudio");
       document.querySelector(".wrapper").classList.add("paused");
       playPauseBtn.innerText = "pause";
-        this.play();
+      this.play();
     },
     pauseMusic() {
       let playPauseBtn = document.querySelector("#playPauseBtn");
