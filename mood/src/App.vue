@@ -62,23 +62,17 @@
             <i id="showmoreBtn" class="material-icons"> queue_music </i>
             <span>Music list</span>
           </div>
-          <i id="closeBtn" @click="moreclose()" class="material-icons"> close </i>
+          <i id="closeBtn" @click="moreclose()" class="material-icons">
+            close
+          </i>
         </div>
         <ul>
-          <li v-for="music in musicList" :key="music" @click="changeMusic(music.index)">
-            <div class="row">
-              <span
-                >{{ music.title }} {{ music.opus }} {{ music.tonality }}</span
-              >
-              <p>{{ music.composer }}</p>
-            </div>
-            <audio
-              v-on:loadeddata="loadeddata"
-              :id="`audio${music.index}`"
-              :src="`${music.file}`"
-            ></audio>
-            <span :id="`${music.file}`" class="audio-duration">3:40</span>
-          </li>
+          <List
+            :music="music"
+            v-for="music in musicList"
+            :key="music"
+            @click="changeMusic(music.index)"
+          />
         </ul>
       </div>
     </div>
@@ -86,6 +80,8 @@
 </template>
 
 <script>
+import List from "./components/List.vue";
+
 export default {
   name: "App",
   created() {
@@ -99,12 +95,10 @@ export default {
         this.axios.get("http://localhost:8011/selectone").then((result) => {
           console.log("load");
           this.playingMusic = result.data;
-          document.querySelector("#mainAudio").load();
         })
       );
   },
   mounted() {
-    document.querySelector("#mainAudio").load();
     document.querySelector("#mainAudio").addEventListener("timeupdate", (e) => {
       const currentTime = e.target.currentTime;
       const duration = e.target.duration;
@@ -132,6 +126,12 @@ export default {
       musicCurrentTime.innerText = `${currentMin}:${currentSec}`;
     });
   },
+  beforeupdate() {
+    this.load();
+  },
+  updated() {
+    this.play();
+  },
   data() {
     return {
       musicList: "",
@@ -141,14 +141,16 @@ export default {
       repeatTitle: "Playlist looped",
     };
   },
-  components: {},
+  components: {
+    List,
+  },
   methods: {
     playMusic() {
       let playPauseBtn = document.querySelector("#playPauseBtn");
       // let mainAudio = document.querySelector("#mainAudio");
       document.querySelector(".wrapper").classList.add("paused");
       playPauseBtn.innerText = "pause";
-      this.play();
+        this.play();
     },
     pauseMusic() {
       let playPauseBtn = document.querySelector("#playPauseBtn");
@@ -210,14 +212,12 @@ export default {
         this.next();
       } else if (this.repeatText == "repeat_one") {
         document.querySelector("#mainAudio").currentTime = 0;
-        document.querySelector("#mainAudio").load();
         this.playMusic();
       } else if (this.repeatText == "suffle") {
         let num = Math.floor(
           Math.random() * Object.keys(this.musicList).length + 1
         );
         this.playingMusic = this.musicList[num];
-        document.querySelector("#mainAudio").load();
         this.playMusic();
       }
     },
@@ -238,7 +238,6 @@ export default {
       document.querySelector(".music-list").classList.remove("show");
     },
     loadeddata: function () {
-
       // const ul = document.querySelector("ul");
 
       for (let i = 0; i < this.musicList.length; i++) {
@@ -246,21 +245,24 @@ export default {
         //   `"${this.musicList[i].file}"`
         // );
 
-        let audioDuration = document.getElementById(`audio${this.musicList[i].index}`).duration
-          let totalMin = Math.floor(audioDuration / 60);
-          let totalSec = Math.floor(audioDuration % 60);
-          if (totalSec < 10) {
-            totalSec = `0${totalSec}`;
-          }
-          document.getElementById(`${this.musicList[i].file}`).innerText = `${totalMin}:${totalSec}`;
+        let audioDuration = document.getElementById(
+          `audio${this.musicList[i].index}`
+        ).duration;
+        let totalMin = Math.floor(audioDuration / 60);
+        let totalSec = Math.floor(audioDuration % 60);
+        if (totalSec < 10) {
+          totalSec = `0${totalSec}`;
+        }
+        document.getElementById(
+          `${this.musicList[i].file}`
+        ).innerText = `${totalMin}:${totalSec}`;
       }
     },
-    setMusic : function(){
-    },
-    changeMusic(index){
-      this.playingMusic = this.musicList[index-1];
+    setMusic: function () {},
+    changeMusic(index) {
+      this.playingMusic = this.musicList[index - 1];
       this.moreclose();
-    }
+    },
   },
 };
 </script>
