@@ -88,13 +88,13 @@ export default {
   name: "App",
   beforeMount() {
     this.axios
-      .get("http://localhost:8011/selectall")
+      .get("https://moodserver.herokuapp.com/selectone")
       .then((result) => {
-        this.musicList = result.data;
+        this.playingMusic = result.data;
       })
       .then(
-        this.axios.get("http://localhost:8011/selectone").then((result) => {
-          this.playingMusic = result.data;
+        this.axios.get("https://moodserver.herokuapp.com/selectall").then((result) => {
+          this.musicList = result.data;
           console.log("크롬 정책으로 인해 처음 자동재생이 불가능합니다.");
         })
       );

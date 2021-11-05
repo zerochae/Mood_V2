@@ -1,13 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
 
-span,i{
+
+span,i,p{
     transform: rotate(0.04deg);
     }
 
@@ -25,6 +20,16 @@ span,i{
     --pinkshadow : #ffcbdd;
     --lightshadow : rgba(0,0,0,0.15);
 }
+
+
+  *{ 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    background: var(--white);
+    
+  }
 
 .main-container{
     display:flex;

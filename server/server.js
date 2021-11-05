@@ -6,9 +6,10 @@ const db_config = require('./config/database.js');
 var mysql = require('mysql');
 const conn = mysql.createConnection(db_config);
 
+const PORT = process.env.PORT || 3000;
 
-app.listen(8011,function(){
-    console.log('listening on 8011')
+app.listen(PORT,function(){
+    console.log('listening on ' + PORT )
 });
 
 
