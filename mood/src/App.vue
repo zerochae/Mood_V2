@@ -2,9 +2,9 @@
   <div class="main-container">
     <div class="wrapper">
       <div class="top-bar">
-        <i class="material-icons"> expand_more </i>
+        <i class="material-icons iconContainer"> expand_more </i>
         <span> Mood </span>
-        <i class="material-icons"> more_horiz </i>
+        <i class="material-icons iconContainer"> more_horiz </i>
       </div>
 
       <div class="img-area">
@@ -19,7 +19,7 @@
         </p>
         <p class="artist">{{ playingMusic.composer }}</p>
       </div>
-
+      <div class="progress-container">
       <div v-on:click="warp" class="progress-area">
         <div class="progress-bar"></div>
 
@@ -34,43 +34,46 @@
           v-on:loadeddata="setMusic"
         ></audio>
       </div>
+      </div>
       <div class="controls">
         <i
           id="repeat-plist"
-          class="material-icons"
+          class="material-icons iconContainer"
           @click="isRepeat()"
           :title="`${repeatTitle}`"
         >
           {{ repeatText }}
         </i>
-        <i id="prev" @click="prev()" class="material-icons"> skip_previous </i>
+        <i id="prev" @click="prev()" class="material-icons iconContainer"> skip_previous </i>
         <!-- <div class="play-pause"> -->
         <div class="play-pause2">
-          <i id="playPauseBtn" @click="playPause()" class="material-icons">
+          <i id="playPauseBtn" @click="playPause()" class="material-icons iconContainer">
             play_arrow
           </i>
         </div>
         <!-- </div> -->
-        <i id="next" @click="next()" class="material-icons"> skip_next </i>
-        <i id="more-music" @click="showmore()" class="material-icons">
+        <i id="next" @click="next()" class="material-icons iconContainer"> skip_next </i>
+        <i id="more-music" @click="showmore()" class="material-icons iconContainer">
           queue_music
         </i>
       </div>
       <div class="music-list">
         <div class="header">
           <div class="row">
-            <i id="showmoreBtn" class="material-icons"> queue_music </i>
+            <i id="showmoreBtn" class="material-icons "> queue_music </i>
             <span>Music list</span>
           </div>
-          <i id="closeBtn" @click="moreclose()" class="material-icons">
+          <i id="closeBtn" @click="moreclose()" class="material-icons iconContainer">
             close
           </i>
         </div>
         <ul>
           <li :music="music" v-for="music in musicList" :key="music" @click="changeMusic(music.index)">
+            <div class="row-container">
             <div class="row">
               <span>{{ music.title }} {{ music.opus }} {{ music.tonality }}</span>
               <p>{{ music.composer }}</p>
+            </div>
             </div>
             <audio v-on:loadeddata="loadeddata" :id="`audio${music.index}`" :src="`${music.file}`"
             ></audio>
