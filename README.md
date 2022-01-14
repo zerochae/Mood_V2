@@ -14,7 +14,7 @@ Classic Streaming App player
 
 <img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the badge&logo=vue.js&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the badge&logo=Node.js&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the badge&logo=MySQL&logoColor=FFFFFF"/>
 
-### Architect
+### Architecture
 
 ![Mood Architect](https://user-images.githubusercontent.com/84373490/149466650-a2fbee5e-fc2c-4926-ab6e-ef0b2f4eccee.png)
 
