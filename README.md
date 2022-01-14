@@ -1,9 +1,10 @@
 # Mood_V2
 
-# Developer
+### Developer
 
-|Zerochae|권영채||
-|---|---|---|
+|Zerochae|
+|---|
+|![ua](https://user-images.githubusercontent.com/84373490/149466662-281cf4cb-4a7c-4856-8aab-111904d645f3.jpg)|
 
 ### 개요
 
@@ -11,7 +12,7 @@ Classic Streaming App player
 
 ### Architect
 
-img
+![Mood Architect](https://user-images.githubusercontent.com/84373490/149466650-a2fbee5e-fc2c-4926-ab6e-ef0b2f4eccee.png)
 
 ### API
 
