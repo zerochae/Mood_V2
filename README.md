@@ -10,6 +10,9 @@
 
 Classic Streaming App player
 
+![Mood](https://user-images.githubusercontent.com/84373490/149467875-11d037ba-788c-48de-8021-8df1e18fdeeb.jpg)
+
+
 ### Skill Stack
 
 <img src="https://img.shields.io/badge/Vue-4FC08D?style=for-the badge&logo=vue.js&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the badge&logo=Node.js&logoColor=FFFFFF"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the badge&logo=MySQL&logoColor=FFFFFF"/>
