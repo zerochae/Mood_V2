@@ -11,6 +11,7 @@
 Classic Streaming App player
 
 ![Mood](https://user-images.githubusercontent.com/84373490/149467875-11d037ba-788c-48de-8021-8df1e18fdeeb.jpg)
+![Mood WorkList](https://user-images.githubusercontent.com/84373490/149471464-a7043844-91d7-4c37-8e99-772246495afb.jpg)
 
 
 ### Skill Stack
@@ -19,7 +20,7 @@ Classic Streaming App player
 
 ### Architecture
 
-![Mood Architect](https://user-images.githubusercontent.com/84373490/149466650-a2fbee5e-fc2c-4926-ab6e-ef0b2f4eccee.png)
+![Mood Architect](https://user-images.githubusercontent.com/84373490/149471490-528f4eda-efaf-4ede-a3f1-1d7b74d8db7e.png)
 
 ### API
 
